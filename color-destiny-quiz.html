@@ -197,14 +197,6 @@
       0 14px 26px -12px rgba(0,0,0,0.65);
   }
   .card-face-front { background: var(--surface); }
-  .card-face-front::after {
-    content: ""; position: absolute; inset: 0; z-index: 2; pointer-events: none; mix-blend-mode: soft-light;
-    background: linear-gradient(115deg, transparent 42%, rgba(255,255,255,0.9) 50%, transparent 58%);
-    background-size: 260% 260%; background-position: 180% -20%;
-    animation: shimmerSweep 1s ease-out both;
-    animation-delay: calc(var(--delay, 0s) + 0.9s);
-  }
-  @keyframes shimmerSweep { to { background-position: -60% 140%; } }
   .card-emblem {
     position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
     font-size: 52px; filter: drop-shadow(0 3px 6px rgba(0,0,0,0.32));
@@ -224,10 +216,6 @@
   .card-face-back::before {
     content: ""; position: absolute; inset: 9px; pointer-events: none;
     border: 1px solid rgba(230,191,114,0.35); border-radius: 5px;
-  }
-  .card-back-mark {
-    font-family: "Ma Shan Zheng", "Noto Serif TC", cursive; font-size: 46px;
-    color: var(--gold); opacity: 0.75; text-shadow: 0 0 20px rgba(230,191,114,0.4);
   }
   .reveal-blurb {
     max-width: 300px; text-align: center; color: var(--ink-soft); font-size: 13.5px;
@@ -507,7 +495,7 @@
               : '<img class="card-art-img" alt="" hidden>') +
             '<div class="card-emblem" aria-hidden="true">' + issue.emoji + '</div>' +
           '</div>' +
-          '<div class="card-face card-face-back"><span class="card-back-mark">卦</span></div>' +
+          '<div class="card-face card-face-back"></div>' +
         '</div>' +
         '<p class="reveal-blurb">' + issue.blurb + '</p>';
       elRevealList.appendChild(item);
