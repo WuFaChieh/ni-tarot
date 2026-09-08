@@ -471,13 +471,23 @@
     if (idx > 0) { idx -= 1; renderQuestion(); }
   });
 
+  function shuffle(arr) {
+    for (var i = arr.length - 1; i > 0; i--) {
+      var j = Math.floor(Math.random() * (i + 1));
+      var tmp = arr[i]; arr[i] = arr[j]; arr[j] = tmp;
+    }
+    return arr;
+  }
+
   function tally() {
     var counts = {};
     ISSUES.forEach(function (i) { counts[i.key] = 0; });
     answers.forEach(function (a) { if (a) counts[a] += 1; });
-    return ISSUES
-      .map(function (i) { return i.key; })
-      .filter(function (k) { return counts[k] > 0; })
+    // shuffle first, then a stable sort by count preserves the shuffled
+    // (random) order among tied issues instead of always favoring
+    // whichever issue happens to come first in ISSUES.
+    var candidates = shuffle(ISSUES.map(function (i) { return i.key; }).filter(function (k) { return counts[k] > 0; }));
+    return candidates
       .sort(function (a, b) { return counts[b] - counts[a]; })
       .slice(0, TOP_N);
   }
