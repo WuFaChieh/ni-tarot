@@ -194,16 +194,9 @@
       0 0 0 1px rgba(0,0,0,0.35),
       0 0 0 4px var(--surface),
       0 0 0 5px rgba(199,154,75,0.45),
-      0 10px 20px -12px rgba(0,0,0,0.6),
-      0 26px 48px -20px var(--swatch);
+      0 14px 26px -12px rgba(0,0,0,0.65);
   }
   .card-face-front { background: var(--swatch); }
-  .card-face-front::before {
-    content: ""; position: absolute; inset: 0; z-index: 1;
-    background:
-      radial-gradient(120% 90% at 50% 18%, rgba(255,255,255,0.20), transparent 58%),
-      radial-gradient(140% 100% at 50% 108%, rgba(0,0,0,0.35), transparent 55%);
-  }
   .card-face-front::after {
     content: ""; position: absolute; inset: 0; z-index: 2; pointer-events: none; mix-blend-mode: soft-light;
     background: linear-gradient(115deg, transparent 42%, rgba(255,255,255,0.9) 50%, transparent 58%);
